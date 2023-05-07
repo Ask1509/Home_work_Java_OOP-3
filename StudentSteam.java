@@ -6,7 +6,11 @@ import java.util.Iterator;
 
 import java.util.List;
 
-
+/*
+ * представляет поток студентов и содержит поле`streamNumber` - номер потока, 
+ * и список `groups` - список учебных групп,представленных объектами класса `StudentGroup`.
+ * 
+ */
 
 class StudentStream implements Iterable<StudentGroup> {
 
@@ -26,7 +30,9 @@ class StudentStream implements Iterable<StudentGroup> {
 
     }
 
-
+/*
+ * Метод `addGroup(StudentGroup group)` добавляет группу в список групп потока.
+ */
 
     public void addGroup(StudentGroup group) {
 
@@ -34,7 +40,10 @@ class StudentStream implements Iterable<StudentGroup> {
 
     }
 
-
+/*
+ * Метод `getStreamNumber()` возвращает номер потока, а метод `getGroups()`
+ * возвращает список групп.
+ */
 
     public int getStreamNumber() {
 
@@ -50,7 +59,10 @@ class StudentStream implements Iterable<StudentGroup> {
 
     }
 
-
+/*
+ * Интерфейс `Iterable` был реализован, поэтому в классе `StudentStream` былреализован метод `iterator()`, 
+ * который возвращает итератор для списка групп.
+ */
 
     public Iterator<StudentGroup> iterator() {
 
@@ -62,7 +74,10 @@ class StudentStream implements Iterable<StudentGroup> {
 
 }
 
-
+/*
+ * Класс `StudentGroup` представляет учебную группу и содержит поля `name` -название группы, 
+ * и `numberOfStudents` - количество студентов в группе.
+ */
 
 class StudentGroup implements Comparable<StudentGroup> {
 
@@ -71,7 +86,6 @@ class StudentGroup implements Comparable<StudentGroup> {
     private String name;
 
     private int numberOfStudents;
-
 
 
     public StudentGroup(String name, int numberOfStudents) {
@@ -83,13 +97,11 @@ class StudentGroup implements Comparable<StudentGroup> {
     }
 
 
-
     public String getName() {
 
         return name;
 
     }
-
 
 
     public int getNumberOfStudents() {
@@ -98,15 +110,19 @@ class StudentGroup implements Comparable<StudentGroup> {
 
     }
 
-
-
+/*
+ * Метод `compareTo(StudentGroup otherGroup)` реализует метод 
+ * сравненияобъектов класса `StudentGroup` по количеству студентов.
+ */
     public int compareTo(StudentGroup otherGroup) {
 
         return Integer.compare(this.numberOfStudents, otherGroup.numberOfStudents);
 
     }
 
-
+/*
+ * Метод `toString()` возвращает строку с названием группы и количеством студентов.
+ */
 
     public String toString() {
 
@@ -115,10 +131,13 @@ class StudentGroup implements Comparable<StudentGroup> {
     }
 
 
-
 }
 
-
+/*
+ * В методе `main` создается объект `stream` класса `StudentStream` с номеромпотока 1. 
+ * Затем создаются три объекта `group1`, `group2`, `group3` класса`StudentGroup` с разным количеством студентов, 
+ * и каждая группа добавляется всписок групп потока.
+ */
 
 public class Main {
 
@@ -137,14 +156,15 @@ public class Main {
         StudentGroup group3 = new StudentGroup("Group 3", 10);
 
 
-
         stream.addGroup(group1);
 
         stream.addGroup(group2);
 
         stream.addGroup(group3);
-
-
+/*
+ * Цикл `for` используется для вывода списка групп на консоль, 
+ * а после этогосписок сортируется методом `sort` класса `Collections`, используя интерфейс`Comparable`.
+ */
 
         for (StudentGroup group : stream) {
 
@@ -152,11 +172,7 @@ public class Main {
 
         }
 
-
-
         Collections.sort(stream.getGroups());
-
-
 
         for (StudentGroup group : stream) {
 
@@ -166,6 +182,8 @@ public class Main {
 
     }
 
-
+/*
+ * После сортировки группы выводятся на консоль в отсортированном порядке.
+ */
 
 }
